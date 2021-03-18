@@ -1,6 +1,6 @@
 class Herd:
-    def __init__(self):
-        self.name = ""
+    def __init__(self, name):
+        self.name = name
         self.members = []
         self.strength_points = 0
 
@@ -22,3 +22,10 @@ class Herd:
             pass
         finally:
             self.strength_points -= attack_power
+
+    def herd_status(self):
+        print(f'Herd: {self.name} has {len(self.members)} members and total strength of {self.strength_points}')
+        counter = 0
+        while counter < len(self.members):
+            print(f'      {self.members[counter]}')
+            counter += 1
