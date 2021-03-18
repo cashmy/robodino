@@ -1,3 +1,5 @@
+# The following variables should be refactored into a superclass
+# from which weapon and attack_type will inherit these values.
 attack_type = ['Bite', 'Claw/Slash', 'Tail whip', 'Bash', 'Gore/Rend']
 attack_power = [20, 5, 10, 25, 15]
 

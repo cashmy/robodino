@@ -30,3 +30,11 @@ class Fleet:
         while counter < len(self.members):
             print(f'       {self.members[counter]}')
             counter += 1
+
+    # This method takes in a array of objects and assigns the whole group to a fleet)
+    def assign_cohort(self, robots_to_add):
+        # Ex: robots_to_add[('R2D2', 10),('C3PO', 20),('R5D6', 30)]
+        counter = 0
+        while 0 < len(robots_to_add):
+            self.assign_member(robots_to_add)
+            counter += 1
