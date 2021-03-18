@@ -21,9 +21,9 @@ if __name__ == '__main__':
 
     # Assemble the dinosaurs
     print('\n================================')
-    dinosaur1 = Dinosaur('Triceratops', 200, 100, 100)
+    dinosaur1 = Dinosaur('Triceratops', 200, 100, 'Bash')
     dinosaur1.dino_attr_list()
-    dinosaur2 = Dinosaur('Velociraptor', 100, 200, 75)
+    dinosaur2 = Dinosaur('Velociraptor', 100, 200, 'Tail whip')
     dinosaur2.dino_attr_list()
-    dinosaur3 = Dinosaur('T-Rex', 250, 250, 275)
+    dinosaur3 = Dinosaur('T-Rex', 250, 250, 'Bite')
     dinosaur3.dino_attr_list()
