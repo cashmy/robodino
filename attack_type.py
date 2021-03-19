@@ -6,7 +6,16 @@ attack_power = [20, 5, 10, 25, 15]
 
 class AttackType:
 
-    def __init__(self, type_of_attack):
-        self.type_of_attack = type_of_attack
-        index = attack_type.index(type_of_attack)
+    def __init__(self, attack):
+        self.type_of_attack = self.attack_type_assignment(attack)
+        index = attack_type.index(self.type_of_attack)
         self.attack_power = attack_power[index]
+
+    @staticmethod
+    def attack_type_assignment(attack):
+        if not attack:
+            print(attack_type)
+            attack = input('Chose a primary attack from the above list: ')
+            if not attack:
+                attack = 'Bite'
+        return attack

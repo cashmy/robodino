@@ -17,3 +17,7 @@ class Dinosaur:
     def update_health(self, damage):
         self.health -= damage
         return self
+
+    def update_energy(self, energy_expended):
+        self.energy -= energy_expended
+        return self

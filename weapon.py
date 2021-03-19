@@ -7,6 +7,15 @@ attack_power = [20, 15, 10, 5, 25]
 class Weapon:
 
     def __init__(self, weapon_type):
-        self.weapon_type = weapon_type
-        index = weapon.index(weapon_type)
+        self.weapon_type = self.weapon_assignment(weapon_type)
+        index = weapon.index(self.weapon_type)
         self.attack_power = attack_power[index]
+
+    @staticmethod
+    def weapon_assignment(weapon_type):
+        if not weapon_type:
+            print(weapon)
+            weapon_type = input('Chose a weapon from the above list: ')
+            if not weapon_type:
+                weapon_type = 'Phaser'
+        return weapon_type

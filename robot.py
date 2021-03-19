@@ -16,3 +16,7 @@ class Robot:
     def update_health(self, damage):
         self.health -= damage
         return self
+
+    def update_power_level(self, energy_expended):
+        self.power_level -= energy_expended
+        return self

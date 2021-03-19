@@ -18,9 +18,9 @@ def battle_action():
     #       AN ARRAY/LIST WOULD BE MUCH MORE EFFICIENT
     # Assemble the robots
     print('\n================================')
-    robot1 = Robot('Able', 50, 100, 'Phaser').robot_attr_list()
-    robot2 = Robot('Baker', 50, 100, 'Phaser').robot_attr_list()
-    robot3 = Robot('Sarge', 125, 250, 'Chain Sword').robot_attr_list()
+    robot1 = Robot('Able', 50, 50, 'Phaser').robot_attr_list()
+    robot2 = Robot('Baker', 50, 50, 'Phaser').robot_attr_list()
+    robot3 = Robot('Sarge', 125, 100, '').robot_attr_list()
 
     robot_fleet = Fleet('Armageddon')
     robot_fleet.assign_member(robot3.name, robot3.attack_power, robot3.health)
@@ -30,9 +30,9 @@ def battle_action():
 
     # Assemble the dinosaurs
     print('\n================================')
-    dinosaur1 = Dinosaur('Triceratops', 75, 100, 'Bash').dino_attr_list()
-    dinosaur2 = Dinosaur('Velociraptor', 50, 200, 'Tail whip').dino_attr_list()
-    dinosaur3 = Dinosaur('T-Rex', 100, 250, 'Bite').dino_attr_list()
+    dinosaur1 = Dinosaur('Triceratops', 75, 30, 'Bash').dino_attr_list()
+    dinosaur2 = Dinosaur('Velociraptor', 50, 100, 'Tail whip').dino_attr_list()
+    dinosaur3 = Dinosaur('T-Rex', 100, 70, '').dino_attr_list()
 
     dinosaur_herd = Herd('R-r-raw-R!')
     dinosaur_herd.add_member(dinosaur3.dino_type, dinosaur3.attack_power, dinosaur3.health)
@@ -59,58 +59,71 @@ def battle_action():
         side2_damage = 0
         damage1 = 0
         # battle strikes happen here...
-        if robot1.health > 0 and dinosaur1.health > 0:
+        # Individual engagements (eg. 1 vs 1, 2 vs 2, 3 vs 3)
+        if (robot1.health > 0 and robot1.power_level > 0) and (dinosaur1.health > 0 and dinosaur1.energy > 0):
             robot_attack_damage = make_an_attack(robot1.attack_power)
             dino_attack_damage = make_an_attack(dinosaur1.attack_power)
-            dinosaur1.update_health(robot_attack_damage)
-            robot1.update_health(dino_attack_damage)
+            dinosaur1.update_health(robot_attack_damage).update_energy(10)
+            robot1.update_health(dino_attack_damage).update_power_level(10)
             if detail_print == 'y':
                 print(f'Robot {robot1.name} hits {dinosaur1.dino_type} for {robot_attack_damage} damage '
-                      f'and it has {dinosaur1.health} health left.')
+                      f'and it has {dinosaur1.health} health '
+                      f'and {dinosaur1.energy} energy left.')
                 print(f'The {dinosaur1.dino_type} hits {robot1.name} for {dino_attack_damage} damage '
-                      f'and it has {robot1.health} health left.\n')
+                      f'and it has {robot1.health} health '
+                      f'and {robot1.power_level} power left.\n')
             side1_damage += dino_attack_damage
             side2_damage += robot_attack_damage
         else:
+            # One member has been defeated, the other may or may not be left standing.
             engagements -= 1
 
-        if robot2.health > 0 and dinosaur2.health > 0:
+        if (robot2.health > 0 and robot2.power_level > 0) and (dinosaur2.health > 0 and dinosaur2.energy > 0):
             robot_attack_damage = make_an_attack(robot2.attack_power)
             dino_attack_damage = make_an_attack(dinosaur2.attack_power)
-            dinosaur2.update_health(robot_attack_damage)
-            robot2.update_health(dino_attack_damage)
+            dinosaur2.update_health(robot_attack_damage).update_energy(10)
+            robot2.update_health(dino_attack_damage).update_power_level(10)
             if detail_print == 'y':
                 print(f'Robot {robot2.name} hits {dinosaur2.dino_type} for {robot_attack_damage} damage '
-                      f'and it has {dinosaur2.health} health left.')
+                      f'and it has {dinosaur2.health} health '
+                      f'and {dinosaur2.energy} energy left.')
                 print(f'The {dinosaur2.dino_type} hits {robot2.name} for {dino_attack_damage} damage '
-                      f'and it has {robot2.health} health left.\n')
+                      f'and it has {robot2.health} health '
+                      f'and {robot2.power_level} power left.\n')
             side1_damage += dino_attack_damage
             side2_damage += robot_attack_damage
         else:
+            # One member has been defeated, the other may or may not be left standing.
             engagements -= 1
 
-        if robot3.health > 0 and dinosaur3.health > 0:
+        if (robot3.health > 0 and robot3.power_level > 0) and (dinosaur3.health > 0 and dinosaur3.energy > 0):
             robot_attack_damage = make_an_attack(robot3.attack_power)
             dino_attack_damage = make_an_attack(dinosaur3.attack_power)
-            dinosaur3.update_health(robot_attack_damage)
-            robot3.update_health(dino_attack_damage)
+            dinosaur3.update_health(robot_attack_damage).update_energy(10)
+            robot3.update_health(dino_attack_damage).update_power_level(10)
             if detail_print == 'y':
                 print(f'Robot {robot3.name} hit the {dinosaur3.dino_type} for {robot_attack_damage} damage '
-                      f'and it has {dinosaur3.health} health left.')
+                      f'and it has {dinosaur3.health} health '
+                      f'and {dinosaur3.energy} energy left.')
                 print(f'The {dinosaur3.dino_type} hit robot {robot3.name} for {dino_attack_damage} damage '
-                      f'and it has {robot3.health} health left.\n')
+                      f'and it has {robot3.health} health '
+                      f'and {robot3.power_level} power left.\n')
             side1_damage += dino_attack_damage
             side2_damage += robot_attack_damage
         else:
+            # One member has been defeated, the other may or may not be left standing.
             engagements -= 1
 
         water_loo.update_battle_status(side1_damage, side2_damage)
         if detail_print == 'y':
             water_loo.battle_status()
         counter += 1
+        # Check to see if either side has been wiped out or at a tactical advantage
         battle_ended = water_loo.battle_results(counter, engagements, detail_print)
+        # Tactical advantage equals all engagements are complete (0).
         if engagements == 0:
             battle_ended = True
         elif counter > 15:
+            # The soldiers are too wimpy and their hearts are in not in the fight!
             print('Battle has stalemated. Troops are going home.')
             battle_ended = True
