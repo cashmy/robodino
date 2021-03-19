@@ -6,8 +6,9 @@ class Fleet:
         self.name = name
         self.members = []
         self.strength_points = 0
+        self.defense_points = 0
 
-    def assign_member(self, name, attack_power):
+    def assign_member(self, name, attack_power, health):
         # Do not allow duplicates
         try:
             self.members.index(name)
@@ -15,14 +16,16 @@ class Fleet:
             self.members.append(name)
         finally:
             self.strength_points += attack_power
+            self.defense_points += health
 
-    def kill_member(self, name, attack_power):
-        try:
-            self.members.remove(name)
-        except ValueError:
-            pass
-        finally:
-            self.strength_points -= attack_power
+    # def kill_member(self, name, attack_power, health):
+    #     try:
+    #         self.members.remove(name)
+    #     except ValueError:
+    #         pass
+    #     finally:
+    #         self.strength_points -= attack_power
+    #         self.defense_points -= health
 
     def fleet_status(self):
         print(f'Fleet: {self.name} has {len(self.members)} members and total strength of {self.strength_points}')

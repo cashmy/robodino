@@ -12,3 +12,5 @@ class Robot:
     def robot_attr_list(self):
         print(f'Name: {self.name}  \n   H: {self.health} P: {self.power_level} W: {self.weapon.weapon_type} Att: {self.weapon.attack_power}')
 
+    def update_health(self, damage):
+        self.health -= damage
