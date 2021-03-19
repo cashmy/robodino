@@ -53,6 +53,7 @@ def battle_action():
     engagements = len(robot_fleet.members)
     water_loo.battle_status()
     print('\n\n ***** Battle commencing *****')
+    detail_print = input('Do you wish to see the details? (y/n): ')
     while not battle_ended:
         side1_damage = 0
         side2_damage = 0
@@ -63,10 +64,11 @@ def battle_action():
             dino_attack_damage = make_an_attack(dinosaur1.attack_power)
             dinosaur1.update_health(robot_attack_damage)
             robot1.update_health(dino_attack_damage)
-            print(f'Robot {robot1.name} hits {dinosaur1.dino_type} for {robot_attack_damage} damage '
-                  f'and it has {dinosaur1.health} health left.')
-            print(f'The {dinosaur1.dino_type} hits {robot1.name} for {dino_attack_damage} damage '
-                  f'and it has {robot1.health} health left.\n')
+            if detail_print == 'y':
+                print(f'Robot {robot1.name} hits {dinosaur1.dino_type} for {robot_attack_damage} damage '
+                      f'and it has {dinosaur1.health} health left.')
+                print(f'The {dinosaur1.dino_type} hits {robot1.name} for {dino_attack_damage} damage '
+                      f'and it has {robot1.health} health left.\n')
             side1_damage += dino_attack_damage
             side2_damage += robot_attack_damage
         else:
@@ -77,10 +79,11 @@ def battle_action():
             dino_attack_damage = make_an_attack(dinosaur2.attack_power)
             dinosaur2.update_health(robot_attack_damage)
             robot2.update_health(dino_attack_damage)
-            print(f'Robot {robot2.name} hits {dinosaur2.dino_type} for {robot_attack_damage} damage '
-                  f'and it has {dinosaur2.health} health left.')
-            print(f'The {dinosaur2.dino_type} hits {robot2.name} for {dino_attack_damage} damage '
-                  f'and it has {robot2.health} health left.\n')
+            if detail_print == 'y':
+                print(f'Robot {robot2.name} hits {dinosaur2.dino_type} for {robot_attack_damage} damage '
+                      f'and it has {dinosaur2.health} health left.')
+                print(f'The {dinosaur2.dino_type} hits {robot2.name} for {dino_attack_damage} damage '
+                      f'and it has {robot2.health} health left.\n')
             side1_damage += dino_attack_damage
             side2_damage += robot_attack_damage
         else:
@@ -91,18 +94,21 @@ def battle_action():
             dino_attack_damage = make_an_attack(dinosaur3.attack_power)
             dinosaur3.update_health(robot_attack_damage)
             robot3.update_health(dino_attack_damage)
-            print(f'Robot {robot3.name} hit the {dinosaur3.dino_type} for {robot_attack_damage} damage '
-                  f'and it has {dinosaur3.health} health left.')
-            print(f'The {dinosaur3.dino_type} hit robot {robot3.name} for {dino_attack_damage} damage '
-                  f'and it has {robot3.health} health left.\n')
+            if detail_print == 'y':
+                print(f'Robot {robot3.name} hit the {dinosaur3.dino_type} for {robot_attack_damage} damage '
+                      f'and it has {dinosaur3.health} health left.')
+                print(f'The {dinosaur3.dino_type} hit robot {robot3.name} for {dino_attack_damage} damage '
+                      f'and it has {robot3.health} health left.\n')
             side1_damage += dino_attack_damage
             side2_damage += robot_attack_damage
         else:
             engagements -= 1
 
-        water_loo.update_battle_status(side1_damage, side2_damage).battle_status()
+        water_loo.update_battle_status(side1_damage, side2_damage)
+        if detail_print == 'y':
+            water_loo.battle_status()
         counter += 1
-        battle_ended = water_loo.battle_results(counter, engagements)
+        battle_ended = water_loo.battle_results(counter, engagements, detail_print)
         if engagements == 0:
             battle_ended = True
         elif counter > 15:

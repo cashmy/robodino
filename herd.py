@@ -27,7 +27,9 @@ class Herd:
     #         self.strength_points -= attack_power
 
     def herd_status(self):
-        print(f'Herd: {self.name} has {len(self.members)} members and total strength of {self.strength_points}')
+        print(f'Herd: {self.name} has {len(self.members)} members '
+              f'with a total strength of {self.strength_points} '
+              f'and a total defense of {self.defense_points}.')
         counter = 0
         while counter < len(self.members):
             print(f'      {self.members[counter]}')

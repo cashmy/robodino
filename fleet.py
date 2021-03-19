@@ -29,7 +29,9 @@ class Fleet:
     #         self.defense_points -= health
 
     def fleet_status(self):
-        print(f'Fleet: {self.name} has {len(self.members)} members and total strength of {self.strength_points}')
+        print(f'Fleet: {self.name} has {len(self.members)} members '
+              f'with a total strength of {self.strength_points} '
+              f'and a total defense of {self.defense_points}.')
         counter = 0
         while counter < len(self.members):
             print(f'       {self.members[counter]}')

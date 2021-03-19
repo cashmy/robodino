@@ -22,7 +22,7 @@ class Battlefield:
         print(f'The Defenders: {self.side2_name} have a current defense of {self.side2_points}')
         return self
 
-    def battle_results(self, attack_turns, engagements):
+    def battle_results(self, attack_turns, engagements, detail_print):
         if self.side1_points <= 0:
             print(f'The defenders, {self.side2_name} have beat back the terrible attackers after {attack_turns} actions!')
             self.battle_end = True
@@ -36,5 +36,6 @@ class Battlefield:
                 print(f'The Attackers {self.side1_name} has a tactical victory after {attack_turns} actions.')
             self.battle_end = True
         else:
-            print(f' *****     The battle is still raging!     ***** \n')
+            if detail_print == 'y':
+                print(f' *****     The battle is still raging!     ***** \n')
         return self.battle_end
