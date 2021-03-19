@@ -6,9 +6,11 @@ from herd import Herd
 from battlefield import Battlefield
 import random_attack
 
+
 def make_an_attack(attack_power):
     hit = random_attack.random_att(attack_power)
     return hit
+
 
 def battle_action():
     # NOTE: THIS REALLY SHOULD BE DONE USING A DATABASE OR AN ARRAY/LIST
