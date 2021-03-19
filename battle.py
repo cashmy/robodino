@@ -18,12 +18,9 @@ def battle_action():
     #       AN ARRAY/LIST WOULD BE MUCH MORE EFFICIENT
     # Assemble the robots
     print('\n================================')
-    robot1 = Robot('Able', 50, 100, 'Phaser')
-    robot1.robot_attr_list()
-    robot2 = Robot('Baker', 50, 100, 'Phaser')
-    robot2.robot_attr_list()
-    robot3 = Robot('Sarge', 125, 250, 'Chain Sword')
-    robot3.robot_attr_list()
+    robot1 = Robot('Able', 50, 100, 'Phaser').robot_attr_list()
+    robot2 = Robot('Baker', 50, 100, 'Phaser').robot_attr_list()
+    robot3 = Robot('Sarge', 125, 250, 'Chain Sword').robot_attr_list()
 
     robot_fleet = Fleet('Armageddon')
     robot_fleet.assign_member(robot3.name, robot3.attack_power, robot3.health)
@@ -33,12 +30,9 @@ def battle_action():
 
     # Assemble the dinosaurs
     print('\n================================')
-    dinosaur1 = Dinosaur('Triceratops', 75, 100, 'Bash')
-    dinosaur1.dino_attr_list()
-    dinosaur2 = Dinosaur('Velociraptor', 50, 200, 'Tail whip')
-    dinosaur2.dino_attr_list()
-    dinosaur3 = Dinosaur('T-Rex', 100, 250, 'Bite')
-    dinosaur3.dino_attr_list()
+    dinosaur1 = Dinosaur('Triceratops', 75, 100, 'Bash').dino_attr_list()
+    dinosaur2 = Dinosaur('Velociraptor', 50, 200, 'Tail whip').dino_attr_list()
+    dinosaur3 = Dinosaur('T-Rex', 100, 250, 'Bite').dino_attr_list()
 
     dinosaur_herd = Herd('R-r-raw-R!')
     dinosaur_herd.add_member(dinosaur3.dino_type, dinosaur3.attack_power, dinosaur3.health)
@@ -106,8 +100,7 @@ def battle_action():
         else:
             engagements -= 1
 
-        water_loo.update_battle_status(side1_damage, side2_damage)
-        water_loo.battle_status()
+        water_loo.update_battle_status(side1_damage, side2_damage).battle_status()
         counter += 1
         battle_ended = water_loo.battle_results(counter, engagements)
         if engagements == 0:

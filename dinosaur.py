@@ -10,7 +10,10 @@ class Dinosaur:
         self.attack_power = self.attack_type.attack_power
 
     def dino_attr_list(self):
-        print(f'Name: {self.dino_type}  \n   H: {self.health} E: {self.energy} AT: {self.attack_type.type_of_attack} Att: {self.attack_power}')
+        print(f'Name: {self.dino_type}  \n   H: {self.health} E: {self.energy} '
+              f'AT: {self.attack_type.type_of_attack} Att: {self.attack_power}')
+        return self
 
     def update_health(self, damage):
         self.health -= damage
+        return self

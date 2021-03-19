@@ -17,6 +17,7 @@ class Fleet:
         finally:
             self.strength_points += attack_power
             self.defense_points += health
+        return self
 
     # def kill_member(self, name, attack_power, health):
     #     try:
@@ -33,6 +34,7 @@ class Fleet:
         while counter < len(self.members):
             print(f'       {self.members[counter]}')
             counter += 1
+        return self
 
     # This method takes in a array of objects and assigns the whole group to a fleet)
     def assign_cohort(self, robots_to_add):
@@ -41,3 +43,4 @@ class Fleet:
         while 0 < len(robots_to_add):
             self.assign_member(robots_to_add)
             counter += 1
+        return self

@@ -15,10 +15,12 @@ class Battlefield:
     def update_battle_status(self, side1_hits, side2_hits):
         self.side1_points -= side1_hits
         self.side2_points -= side2_hits
+        return self
 
     def battle_status(self):
         print(f'The Attackers: {self.side1_name} have a current defense of {self.side1_points}')
         print(f'The Defenders: {self.side2_name} have a current defense of {self.side2_points}')
+        return self
 
     def battle_results(self, attack_turns, engagements):
         if self.side1_points <= 0:
