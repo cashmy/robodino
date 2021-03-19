@@ -1,4 +1,5 @@
 import random_attack
+from robot import Robot
 
 
 class Battlefield:

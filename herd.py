@@ -7,7 +7,7 @@ class Herd:
     def add_member(self, dino_type, attack_power):
         # Do not allow duplicates
         # Refactor to allow for multiple number of dino_types
-        #   ... and reduce the 'count' of the dino-types rather than remove.
+        #   ... and reduce the 'count' of the dino-types rather than remove in the 'kill' method.
         try:
             self.members.index(dino_type)
         except ValueError:

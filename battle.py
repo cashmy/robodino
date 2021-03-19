@@ -3,6 +3,7 @@ from robot import Robot
 from dinosaur import Dinosaur
 from fleet import Fleet
 from herd import Herd
+from battlefield import Battlefield
 
 
 def battle_action():
@@ -36,3 +37,11 @@ def battle_action():
     dinosaur_herd.add_member(dinosaur2.dino_type, dinosaur2.attack_power)
     dinosaur_herd.herd_status()
 
+    # Create the battle field
+    water_loo = Battlefield('Water Loo')
+    water_loo.side1_name = robot_fleet.name
+    water_loo.side2_name = dinosaur_herd.name
+    water_loo.side1_points = robot_fleet.strength_points
+    water_loo.side2_points = dinosaur_herd.strength_points
+
+    # Now fight
